@@ -475,14 +475,14 @@ void Server::CheckGameElementsState()
         if (it->second->GetAttacking().first) {
             float attackTime = it->second->GetAttacking().second;
             if (elapsedTime - attackTime >= 500)
-                it->second->SetAttacking({ false, 0 }); //Si un player estava atacant fa mes de 550ms marquem que ya ha acabat d'atacar
+                it->second->SetAttacking({ false, 0 }); //Si un player estava atacant fa mes de 500ms marquem que ya ha acabat d'atacar
             else
                 attacksWithTime.insert({ attackTime, it->first }); //Si encara esta atacant ens el guardem per revisar mestard si ha ferit algu
         }
         else if (it->second->GetBombAnimation().first) {
             float actionTime = it->second->GetBombAnimation().second;
             if (elapsedTime - actionTime >= 500) {
-                it->second->SetBombAnimation({ false, 0 }); //Si el player estava agafant o llençant una bomba fa mes de 550s s'acaba la accio
+                it->second->SetBombAnimation({ false, 0 }); //Si el player estava agafant o llençant una bomba fa mes de 500s s'acaba la accio
                 it->second->actionDone = false;
             }
             else if (!it->second->actionDone){ //Si el player estava agafant o llençant una bomba i encara no haviem processat la accio, ens el guardem per ferho mes endevant
@@ -497,7 +497,7 @@ void Server::CheckGameElementsState()
 
     for (auto it = attacksWithTime.begin(); it != attacksWithTime.end(); it++) { //Repassem si la espasa d'algun atacant ha donat a un altre player //EX:7.1
         for (auto it2 = clientsPlaying.begin(); it2 != clientsPlaying.end(); it2++) {
-            if (it->second == it2->first || elapsedTime - it2->second->GetLastTimeDMG() <= 500) //Nomes pots fer daño a altres jugadors i ha de fer mes de 550ms que han rebut un cop
+            if (it->second == it2->first || elapsedTime - it2->second->GetLastTimeDMG() <= 500) //Nomes pots fer daño a altres jugadors i ha de fer mes de 500ms que han rebut un cop
                 continue;
 
             sf::Vector2f swordPos(clientsPlaying[it->second]->GetPos());
