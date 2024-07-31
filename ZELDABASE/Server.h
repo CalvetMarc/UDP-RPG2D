@@ -10,7 +10,7 @@
 const float subTickTime = 15.625f; //64 times per second
 const float playersVelocity = 40.f;
 const float playersSwordKnockbackForce = 10;
-const sf::Uint32 gameDurationInMs = 60000; //60000ms = 1min
+const sf::Uint32 gameDurationInMs = 600000; //60000ms = 1min
 
 class Server
 {

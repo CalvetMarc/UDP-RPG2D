@@ -76,9 +76,9 @@ public:
 	inline Orientation GetOri() const { return orientation; };
 	inline void SetDir(Orientation newOri) { orientation = newOri; };
 	inline std::pair<bool, float> GetAttacking() const { return attackingAndTime; };
-	inline void SetAttacking(std::pair<bool, float> newAttack) { attackingAndTime = newAttack; };
+	inline void SetAttacking(std::pair<bool, sf::Uint32> newAttack) { attackingAndTime = newAttack; };
 	inline std::pair<bool, float> GetBombAnimation() const { return doingBombAnimationAndTime; };
-	inline void SetBombAnimation(std::pair<bool, float> newBombAnim) { doingBombAnimationAndTime = newBombAnim; };
+	inline void SetBombAnimation(std::pair<bool, sf::Uint32> newBombAnim) { doingBombAnimationAndTime = newBombAnim; };
 	inline int GetLives()const { return lives; }
 	inline void SetLives(int newLives) { lives = newLives; }
 	inline int GetPoints()const { return points; }
